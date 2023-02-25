@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/login', [LoginController::class, 'login']);
+Route::post('/signup', [LoginController::class, 'signUp']);
 Route::get('/tremendo', [LoginController::class, 'tremendo']);
-Route::middleware('is.logged')->get('/logout', [LoginController::class, 'logout']);
-Route::middleware('is.logged')->get('/me', [LoginController::class, 'whoAmI']);
+Route::middleware('auth:api')->get('/logout', [LoginController::class, 'logout']);
+Route::middleware('auth:api')->get('/me', [LoginController::class, 'whoAmI']);
